@@ -1,7 +1,7 @@
 inherit gnome2
 
 NAME="adwaita-icon-theme"
-VERSION=3.22.0
+VERSION=3.24.0
 RELEASE=1
 CATEGORY="GNOME"
 SUMMARY="GNOME desktop icon theme"
@@ -10,6 +10,18 @@ REQUIRES="hicolor-icon-theme"
 HOMEPAGE="http://art.gnome.org/"
 
 ARCH=noarch
+
+PKG_NAMES="${NAME} ${NAME}-devel"
+adwaita_icon_theme_CONTENTS="
+	etc/postinstall/
+	etc/preremove/
+	usr/share/doc/
+	usr/share/icons/Adwaita/
+"
+adwaita_icon_theme_devel_REQUIRES=${NAME}
+adwaita_icon_theme_devel_CONTENTS="
+	usr/share/pkgconfig/${NAME}.pc
+"
 
 src_install() {
 	cd ${B}
